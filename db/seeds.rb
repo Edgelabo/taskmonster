@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Monster.create!(
+   name: 'ボーボ',
+   image: 'bobo.gif'
+)
+Monster.create!(
+   name: 'ネチョー',
+   image: 'netyo.gif'
+)
+Monster.create!(
+   name: 'コロロ',
+   image: 'kororo.gif'
+)

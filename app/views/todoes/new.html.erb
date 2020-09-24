@@ -1,0 +1,19 @@
+
+  <head>
+  <%if false %>
+    <%= stylesheet_link_tag "separate/goal", :media => "all" %>
+  <% end %>
+  </head>
+  <body>
+    <div class="setting_goal">
+      <%= form_for(@goal, :url => {controller:'todoes',action:'create'}) do |f| %>
+          <p class="goal_comment"><%= f.label :goal,"目標を設定しよう!" %></p>
+          <%= f.text_field :goal %>
+        <div class="action">
+          <%= f.submit name="設定する" %>
+        </div>
+      <% end %>
+      <p class="alart">※目標を変更するとモンスターが変わってしまうよ!</p>
+      <%= link_to '戻る', controller: 'todoes', action: 'show', id: current_user.id %>
+    </div>
+  </body>

@@ -10,7 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_24_140555) do
+ActiveRecord::Schema.define(version: 2020_09_24_150107) do
+
+  create_table "goals", force: :cascade do |t|
+    t.string "goal"
+    t.integer "ex", default: 0, null: false
+    t.integer "lv", default: 0, null: false
+    t.integer "user_id"
+    t.integer "monster_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "monsters", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "task"
+    t.boolean "check", default: false
+    t.integer "goal_id"
+    t.string "tag"
+    t.date "limit_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

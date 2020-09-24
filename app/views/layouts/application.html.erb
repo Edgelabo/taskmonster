@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja" dir="ltr">
   <head>
+    <meta charset="utf-8">
     <title>Tasmon</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,6 +11,15 @@
   </head>
 
   <body>
+    <header>
+      <h1>タスクモンスター</h1>
+      <div class="header-right">
+        <p><%= current_user.name %>さんがログイン中</p>
+        <ul>
+          <li><%= link_to "ログアウト",destroy_user_session_path %></li>
+        </ul>
+      </div>
+    </header>
     <%= yield %>
   </body>
 </html>

@@ -5,5 +5,11 @@ Rails.application.routes.draw do
       sessions: 'users/registrations',
       sessions: 'users/sessions'
   }
+  resources :todoes, except: [:show]
+  #タスク作成機能
+  post 'todoes/show' => 'todoes#task_create'
+  #タスク完了
+  patch 'todoes/show/:id' => 'todoes#task_check', as: :check
+  get "users/:id" => "todoes#show", as: :mypage
 
 end
