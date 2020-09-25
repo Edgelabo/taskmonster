@@ -9,13 +9,15 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
     <header>
       <h1>タスクモンスター</h1>
       <div class="header-right">
-        <p><%= current_user.name %>さんがログイン中</p>
+        <%if false %>
+        <p><%= current_user.name %>さんが</p>
+        <% end %>
         <ul>
+          <li><%= link_to "ログイン",new_user_session_path %></li>
           <li><%= link_to "ログアウト",destroy_user_session_path %></li>
         </ul>
       </div>

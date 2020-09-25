@@ -5,6 +5,9 @@ Rails.application.routes.draw do
       sessions: 'users/registrations',
       sessions: 'users/sessions'
   }
+  devise_scope :user do
+    get "users/sign_out", :to => "users/sessions#destroy"
+  end
   resources :todoes, except: [:show]
   #タスク作成機能
   post 'todoes/show' => 'todoes#task_create'

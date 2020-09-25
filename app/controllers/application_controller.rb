@@ -1,10 +1,13 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
     # ログイン済ユーザーのみにアクセスを許可する
-    before_action :authenticate_user!
+    #before_action :authenticate_user!
     # deviseコントローラーにストロングパラメータを追加する
     before_action :configure_permitted_parameters, if: :devise_controller?
 
+    # def after_sign_out_path_for(resource)
+    #     　root_path # ログアウト後に遷移するpathを設定
+    # end
     protected
     def configure_permitted_parameters
         # サインアップ時にnameのストロングパラメータを追加

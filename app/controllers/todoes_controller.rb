@@ -2,13 +2,23 @@ class TodoesController < ApplicationController
   #ログインしていなければ機能が使えない
   # before_action :authenticate_user!
   def index
+    #ログインしてたらShowページに
+    if (user_signed_in?)
+      redirect_to controller: 'todoes', action: 'show', id: current_user.id
+    end
   end
+
   @@current_goal_id = 0
   @@goal = 0
   def show
     @user = User.find(params[:id])
     @goal = @user.goals.last
     @@goal = @user.goals.last #タスク完了にわたすため
+    #初回は目標を設定させる
+    if (@goal.nil?)
+      redirect_to controller: 'todoes', action: 'new'
+      return
+    end
     if !(@goal.nil?)
       @@current_goal_id = @goal.id
       @current_monster_id = @goal.monster_id
@@ -31,7 +41,6 @@ class TodoesController < ApplicationController
   end
   def create
     monster_max = 2 #モンスターを増やした場合はここの変数を増やす
-
     @goal = Goal.new(goal_params)
     @goal.user_id = current_user.id
     @goal.monster_id = rand(1..monster_max)
@@ -49,6 +58,19 @@ class TodoesController < ApplicationController
   end
   #タスク完了
   def task_check
+    @task = Task.find(params[:id])
+    @task.update(check: true)
+    #経験値追加
+    @@goal.increment(:ex , 10)
+    @@goal.save
+
+    if @@goal.ex >= 30
+       @@goal.increment(:lv ,1)
+       @@goal.save
+       @@goal.update(ex: 0)
+     end
+
+    redirect_to controller: 'todoes', action: 'show', id: current_user.id
   end
   def destroy
   end

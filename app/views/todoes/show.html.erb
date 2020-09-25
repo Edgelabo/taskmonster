@@ -1,12 +1,10 @@
   <head>
     <%if false %>
-        <%= stylesheet_link_tag "separate/show", :media => "all" %>
-    <   link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+      <%= stylesheet_link_tag "separate/show", :media => "all" %>
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
      <% end %>
   </head>
   <body oncontextmenu="return false;">
-    <header>
-    </header>
     <!-- 目標 -->
     <div id="goal_container">
       <div class="goal_box">
@@ -57,9 +55,13 @@
         <div class="table">
           <p><%= t.task %></p>
           <div class="task_right">
+            <%if false %>
             <%= button_to check_path(t.id),method: :patch,class: "btn-border-check", form: {style: 'display:inline-block; margin-right:10px;'} do %>
                 <i class="fas fa-check"></i>
             <% end %>
+            <% end %> 
+            <%= link_to '完了', check_path(t.id),method: :patch%>
+            
             <%if false %>
                 <%= button_to todoes_show(t.id), method: :delete,class: "btn-border-cross", form: {style: 'display:inline-block;'} do %>
                     <i class="fas fa-trash-alt"></i>
