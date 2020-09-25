@@ -17,3 +17,8 @@ Monster.create!(
    name: 'コロロ',
    image: 'kororo.gif'
 )
+
+Encourage.create!(comment: '時には休むことも大切だよ〜')
+Encourage.create!(comment: '今日もがんばっていこう！')
+Encourage.create!(comment: 'どんどんタスクこなしていっちゃおう！')
+Encourage.create!(comment: 'タスクをこなしてもっと成長させて！')

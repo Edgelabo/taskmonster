@@ -32,17 +32,17 @@ class TodoesController < ApplicationController
     @check_task = Task.find_by(goal_id: @@current_goal_id)
     @destroy_task = Task.find_by(goal_id: @@current_goal_id)
     # モンスターコメント
-    #comment_max = 4; #コメントを増やした場合はここの変数を増やす
-    #@comment = Encourage.find(rand(1..comment_max)).comment
+    comment_max = Encourage.count;
+    @comment = Encourage.find(rand(1..comment_max)).comment
   end
   #目標作成
   def new
     @goal = Goal.new
   end
   def create
-    monster_max = 2 #モンスターを増やした場合はここの変数を増やす
     @goal = Goal.new(goal_params)
     @goal.user_id = current_user.id
+    monster_max = Monster.count
     @goal.monster_id = rand(1..monster_max)
     @goal.save
 
@@ -69,10 +69,11 @@ class TodoesController < ApplicationController
        @@goal.save
        @@goal.update(ex: 0)
      end
-
     redirect_to controller: 'todoes', action: 'show', id: current_user.id
   end
   def destroy
+    Task.find(params[:id]).destroy
+    redirect_to controller: 'todoes', action: 'show', id: current_user.id
   end
   private
   def goal_params

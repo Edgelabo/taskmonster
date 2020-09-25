@@ -9,10 +9,12 @@ Rails.application.routes.draw do
     get "users/sign_out", :to => "users/sessions#destroy"
   end
   resources :todoes, except: [:show]
+  #メインページ
+  get "users/:id" => "todoes#show", as: :mypage
   #タスク作成機能
   post 'todoes/show' => 'todoes#task_create'
   #タスク完了
   patch 'todoes/show/:id' => 'todoes#task_check', as: :check
-  get "users/:id" => "todoes#show", as: :mypage
-
+  #タスク削除
+  delete 'todoes/show/:id' => 'todoes#destroy', as: :task
 end

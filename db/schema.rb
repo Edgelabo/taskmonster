@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_24_150107) do
+ActiveRecord::Schema.define(version: 2020_09_25_133944) do
+
+  create_table "encourages", force: :cascade do |t|
+    t.text "comment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "goals", force: :cascade do |t|
     t.string "goal"

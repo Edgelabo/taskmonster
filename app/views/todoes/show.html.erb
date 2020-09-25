@@ -32,11 +32,6 @@
           <p><%= @comment %></p>
         </div>
         <% end %>
-        <!--
-        <div class="balloon">
-          <p><<%= @comment %></p>
-        </div>
-        -->
       </div>
     <!-- タスク -->
     <div id="task_container">
@@ -61,12 +56,13 @@
             <% end %>
             <% end %> 
             <%= link_to '完了', check_path(t.id),method: :patch%>
-            
+
             <%if false %>
                 <%= button_to todoes_show(t.id), method: :delete,class: "btn-border-cross", form: {style: 'display:inline-block;'} do %>
                     <i class="fas fa-trash-alt"></i>
                 <% end %>
             <% end %>
+            <%= link_to '削除', todoes_show(t.id), method: :delete%>
           </div>
           <div class="cb"></div>
         </div>
