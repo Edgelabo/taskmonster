@@ -1,0 +1,285 @@
+/*
+body {
+  margin: 0px;
+}
+.cb{
+  floatを解除
+  clear: both;
+}
+ヘッダー部分
+header {
+   background: linear-gradient(to right, #0575e6,#00f260 );
+   margin-bottom: 40px;
+   width: 100%;
+}
+li a{
+  color: white;
+}
+.logout {
+  color: white;
+}
+.title {
+  color: white;
+  font-size: 3.2rem;
+  margin: 1rem 0;
+  font-weight: bold;
+}
+.header-right {
+  display: inline-block;
+  float: right;
+  font-size: 1.7rem;
+}
+.header-right p {
+  color: #fff;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+header ul{
+  list-style: none
+}
+header li {
+  float: left;
+  color: white;
+  font-size: 1.2rem;
+}
+#logo {
+  display: inline-block;
+  font-size: 25px;
+  margin-left: 10px;
+}
+目標
+#goal_container {
+  margin-bottom: 5px;
+  margin-top: 25px;
+}
+.goal {
+  font-size: 4rem;
+  margin: 3px;
+  color: white;
+  display: inline-block;
+}
+.goal span {
+  font-size: 3.2rem;
+}
+.change_goal {
+  float: right;
+  margin: 5px;
+  color: black;
+}
+.goal_box{
+  border: solid 2px #388DED;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #388DED;
+}
+モンスター
+#monster_container {
+  border-radius: 4px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  width: 90%;
+}
+.upper_half {
+  border: 4px solid #388DED;
+  border-radius: 4px;
+  margin-bottom: 3px;
+}
+.status {
+  border-radius: 4px;
+  font-size: 2.6rem;
+  margin-bottom: 10px;
+}
+ .monster_name {
+  display: inline-block;
+  margin: 0.6rem;
+  margin-right: 2rem;
+}
+ .lv {
+  display: inline-block;
+  margin: 0;
+  margin-right: 20px;
+}
+.monster_image {
+  margin-bottom: 0;
+}
+.monster_image img{
+  max-width: 100%;
+  height: auto;
+}
+.comment_box {
+  border: 2px solid black;
+  border-radius: 4px;
+  height: 120px;
+  font-size: 2rem;
+}
+.comment_box p {
+  margin-left: 3px;
+  margin-top: 3px;
+}
+吹き出し
+吹き出し本体
+.balloon{
+  position: relative;
+  width: 40%;
+  height: 200px;
+  margin-top: 20px;
+  margin-left: 20px;
+  padding: 20px;
+  border: 2px solid #388DED;
+  border-radius: 20px;
+  display: inline-block;
+}
+アイコンを左に表示
+.balloon::before{
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  left: -15px;
+  top: 20px;
+  border-right: 15px solid #388DED;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
+.balloon::after{
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  left: -12px;
+  top: 20px;
+  border-right: 15px solid #fff;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
+ボタン
+.btn-border-check {
+  display: inline-block;
+  max-width: 180px;
+  text-align: left;
+  border: 2px solid #9ec34b;
+  font-size: 2rem;
+  color: #9ec34b;
+  background-color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: .4s;
+}
+.btn-border-check:hover {
+  background-color: #9ec34b;
+  border-color: #cbe585;
+  color: #FFF;
+}
+.btn-border-cross {
+  display: inline-block;
+  max-width: 180px;
+  text-align: left;
+  border: 2px solid #F783AC;
+  background-color: white;
+  font-size: 2rem;
+  color: #F783AC;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: .4s;
+}
+.btn-border-cross:hover {
+  background-color: #F783AC;
+  border-color: #F783AC;
+  color: #FFF;
+}
+タスク一覧
+#task_container {
+}
+.add_task {
+  background-color: #388DED;
+  color: white;
+}
+.add_task h2 {
+  margin-left: 3px;
+  font-size: 4rem;
+}
+.new{
+  margin-left: 10px;
+  font-size: 2rem;
+  color: white;
+}
+input[type="text"] {
+    border: 2px solid #696969;
+    width: 600px;
+    height: 50px;
+}
+.submit {
+  border: 1px solid #dcdcdc;
+  display: inline-block;
+  background-color: #dcdcdc;
+  border-radius: 4px;
+  font-size: 1.8rem;
+}
+.submit imput {
+  color: white;
+}
+.table {
+  border-top: 2px solid #c0c0c0;
+  background-color: #FEFEFE;
+  margin-bottom: 0;
+}
+.table p {
+  line-height: 64px;
+  margin-bottom: 0;
+  font-size: 2.3rem;
+}
+input[type="text"] {
+    border: 2px solid #696969;
+    width: 800px;
+    height: 50px;
+}
+
+アコーディオン
+.label-right{
+  float: right;
+  padding-right: 10px;
+  padding-top: 5px;
+}
+.acd-check{
+    display: none;
+}
+.acd-label{
+    background: #388DED;
+    color: #fff;
+    display: block;
+    margin-bottom: 1px;
+    padding: 10px;
+    font-size: 2rem;
+}
+.acd-content{
+    height: 0;
+    opacity: 0;
+    transition: .5s;
+    visibility: hidden;
+}
+.acd-check:checked + .acd-label + .acd-content{
+    height: 40px;
+    opacity: 1;
+    visibility: visible;
+}
+アコーディオン終わり
+.table p{
+  display: inline-block;
+  padding-left: 10px;
+}
+.task_right {
+  display: inline-block;
+  margin:10px 0;
+  margin-right: 5px;
+  float:right;
+}
+.comp {
+  text-decoration: line-through;
+}
+*/
