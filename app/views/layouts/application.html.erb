@@ -18,6 +18,9 @@
         <p><%= current_user.name %>さん</p>
         <% end %>
         <ul>
+          <%if !user_signed_in?%>
+            <li><%= link_to "ログイン",new_user_session_path %></li>
+          <% end %>
             <li><%= link_to "LogOut",destroy_user_session_path %></li>
         </ul>
       </div>
