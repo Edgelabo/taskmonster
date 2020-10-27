@@ -1,9 +1,5 @@
   <head>
-    <%if false %>
-      <%= stylesheet_link_tag "separate/goal", :media => "all" %>
-    <% end %>
   </head>
-
   <body>
     <div class="setting_goal">
       <%= form_for(@goal, :url => {controller:'todoes',action:'create'}) do |f| %>

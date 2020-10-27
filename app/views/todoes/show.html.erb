@@ -1,16 +1,13 @@
   <head>
-    <%if false %>
-      <%= stylesheet_link_tag "separate/show", :media => "all" %>
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-     <% end %>
   </head>
   <body oncontextmenu="return false;">
     <!-- 目標 -->
     <div id="goal_container">
       <div class="goal_box">
-        <p class="goal"><span>現在の目標: </span><% if !(@goal.nil?) %><%= @goal.goal %><% end %></p>
+        <p class="goal"><span>目標: </span><% if !(@goal.nil?) %><%= @goal.goal %><% end %></p>
       </div>
-      <p class="change_goal"><%= link_to '新たな目標を設定', :controller => "todoes", :action => "new" %></p>
+      <p class="change_goal"><%= link_to '新しい目標を設定', :controller => "todoes", :action => "new" %></p>
       <div class="cb"></div>
     </div>
     <!-- モンスター -->
@@ -49,19 +46,12 @@
         <div class="table">
           <p><%= t.task %></p>
           <div class="task_right">
-            <%if false %>
             <%= button_to check_path(t.id),method: :patch,class: "btn-border-check", form: {style: 'display:inline-block; margin-right:10px;'} do %>
-                <i class="fas fa-check"></i>
+                <i class="fas fa-check "></i>
             <% end %>
+            <%= button_to todoes_show_path(t.id), method: :delete,class: "btn-border-cross", form: {style: 'display:inline-block;'} do %>
+                <i class="fas fa-trash-alt"></i>
             <% end %>
-            <%= link_to '完了', check_path(t.id),method: :patch%>
-
-            <%if false %>
-                <%= button_to todoes_show(t.id), method: :delete,class: "btn-border-cross", form: {style: 'display:inline-block;'} do %>
-                    <i class="fas fa-trash-alt"></i>
-                <% end %>
-            <% end %>
-            <%= link_to '削除', todoes_show_path(t.id), method: :delete%>
           </div>
           <div class="cb"></div>
         </div>
