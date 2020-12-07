@@ -1,6 +1,7 @@
   <head>
   </head>
   <body>
+    ネーム: <%= current_user.name %>
     <div class="setting_goal">
       <%= form_for(@goal, :url => {controller:'todoes',action:'create'}) do |f| %>
           <p class="goal_comment"><%= f.label :goal,"目標を設定しよう!" %></p>

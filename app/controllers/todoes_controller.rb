@@ -7,8 +7,22 @@ class TodoesController < ApplicationController
       redirect_to controller: 'todoes', action: 'show', id: current_user.id
     end
   end
-  #@@current_goal_id = 0
-  # @@goal = 0
+  #目標作成
+  def new
+    @goal = Goal.new
+  end
+  def create
+    @goal = Goal.new(goal_params)
+    @goal.user_id = current_user.id
+    monster_max = Monster.count
+    @goal.monster_id = rand(1..monster_max)
+    if @goal.save!
+      redirect_to mypage_path(current_user.id)
+    else
+      redirect_to "http://www.pikawaka.com"
+    end
+    # redirect_to controller: 'todoes', action: 'show', id: current_user.id
+  end
   def show
     @user = User.find(params[:id])
     @goal = @user.goals.last
@@ -33,19 +47,6 @@ class TodoesController < ApplicationController
     # モンスターコメント
     comment_max = Encourage.count;
     @comment = Encourage.find(rand(1..comment_max)).comment
-  end
-  #目標作成
-  def new
-    @goal = Goal.new
-  end
-  def create
-    @goal = Goal.new(goal_params)
-    @goal.user_id = current_user.id
-    monster_max = Monster.count
-    @goal.monster_id = rand(1..monster_max)
-    @goal.save
-
-    redirect_to controller: 'todoes', action: 'show', id: current_user.id
   end
   #タスク作成
   def task_create
@@ -76,11 +77,13 @@ class TodoesController < ApplicationController
     Task.find(params[:id]).destroy
     redirect_to controller: 'todoes', action: 'show', id: current_user.id
   end
+
+
   private
   def goal_params
     params.require(:goal).permit(:goal)
   end
   def task_params
-    params.require(:task).permit(:task,:goal_id)
+    params.require(:task).permit(:task, :goal_id)
   end
 end
