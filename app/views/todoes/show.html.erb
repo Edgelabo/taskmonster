@@ -1,0 +1,82 @@
+  <head>
+    <%if false %>
+      <%= stylesheet_link_tag "separate/show", :media => "all" %>
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+     <% end %>
+  </head>
+  <body oncontextmenu="return false;">
+    <!-- 目標 -->
+    <div id="goal_container">
+      <div class="goal_box">
+        <p class="goal"><span>現在の目標: </span><% if !(@goal.nil?) %><%= @goal.goal %><% end %></p>
+      </div>
+      <p class="change_goal"><%= link_to '新たな目標を設定', :controller => "todoes", :action => "new" %></p>
+      <div class="cb"></div>
+    </div>
+    <!-- モンスター -->
+    <div id="monster_container">
+      <div class="upper_half">
+        <div class="status">
+          <p class="monster_name"><%= @monster.name %></p>
+          <p class="lv">Lv: <%= @goal.lv %></p>
+          <div class="progress" style="height:1.7rem">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="<%= @goal.ex %>" aria-valuemin="0" aria-valuemax="30" style="width: <%= @goal.ex * 3%>% "></div>
+          </div>
+        </div>
+          <!-- モンスター画像 -->
+          <p class="monster_image"> <%= image_tag (@monster.image) %></p>
+      </div>
+        <!-- コメントボックス -->
+        <div class="comment_box">
+          <p><%= @comment %></p>
+        </div>
+      </div>
+    <!-- タスク -->
+    <div id="task_container">
+      <div class="add_task">
+        <h2>ToDo</h2>
+        <%= form_for(@task, :url => { controller:'todoes', action:'task_create'})do |f| %>
+          <div class="new">
+            <%= f.label :task,"新しいタスクを追加" %>
+            <br>
+            <%= f.text_field :task,size: 5000 %>
+            <%= f.hidden_field :goal_id,:value => @goal.id%>
+            <p class="submit"><%= f.submit name="追加"%></p>
+          </div>
+        <% end %>
+      </div>
+      <% @get_uncheck.each do |t|  %>
+        <div class="table">
+          <p><%= t.task %></p>
+          <div class="task_right">
+            <%if false %>
+            <%= button_to check_path(t.id),method: :patch,class: "btn-border-check", form: {style: 'display:inline-block; margin-right:10px;'} do %>
+                <i class="fas fa-check"></i>
+            <% end %>
+            <% end %>
+            <%= link_to '完了', check_path(t.id),method: :patch%>
+
+            <%if false %>
+                <%= button_to todoes_show(t.id), method: :delete,class: "btn-border-cross", form: {style: 'display:inline-block;'} do %>
+                    <i class="fas fa-trash-alt"></i>
+                <% end %>
+            <% end %>
+            <%= link_to '削除', todoes_show_path(t.id), method: :delete%>
+          </div>
+          <div class="cb"></div>
+        </div>
+      <% end %>
+      <input id="acd-check1" class="acd-check" type="checkbox">
+      <label class="acd-label" for="acd-check1">
+        完了したタスク
+        <i class="fas fa-angle-down label-right"></i>
+      </label>
+      <div class="acd-content">
+        <% @get_check.each do |s|  %>
+          <div class="table">
+            <p class="comp"><%= s.task %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </body>

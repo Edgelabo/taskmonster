@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Tasmon</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <header>
+      <h1>タスクモンスター</h1>
+      <div class="header-right">
+        <%if false %>
+        <p><%= current_user.name %>さん</p>
+        <% end %>
+        <ul>
+          <%if !user_signed_in?%>
+            <li><%= link_to "ログイン",new_user_session_path %></li>
+          <% end %>
+            <li><%= link_to "ログアウト",destroy_user_session_path %></li>
+        </ul>
+      </div>
+    </header>
+    <%= yield %>
+  </body>
+</html>
