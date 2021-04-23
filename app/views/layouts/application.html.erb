@@ -20,8 +20,9 @@
         <ul>
           <%if !user_signed_in?%>
             <li><%= link_to "ログイン",new_user_session_path %></li>
-          <% end %>
+          <% else %>
             <li><%= link_to "ログアウト",destroy_user_session_path %></li>
+          <% end %>
         </ul>
       </div>
     </header>
